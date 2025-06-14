@@ -28,7 +28,7 @@ PatientManagementSystem::~PatientManagementSystem()
 {
 	_patientDatabaseLoader->closeConnection();
 
-	//clear patient memory
+	// clear patient memory
 	for (Patient* p : _patients) {
 		delete p;
 	}
@@ -42,7 +42,7 @@ void PatientManagementSystem::init()
 	}
 
 	for (Patient* p : _patients) {
-		//TODO: do any processing you need here
+		// TODO: do any processing you need here
 	}
 }
 
@@ -56,14 +56,14 @@ void PatientManagementSystem::run()
 		int option = 0;
 		cin >> option;
 
-		//handle basic errors
+		// handle basic errors
 		if (cin.bad()) {
 			cin.clear();
 			cin.ignore();
 			continue;
 		}
 
-		//switch based on the selected option
+		// switch based on the selected option
 		switch (option) {
 		case 1:
 			printPatients();

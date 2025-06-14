@@ -1,4 +1,5 @@
-//PatientSystem.cpp : This file contains the 'main' function. Program execution begins and ends there.
+// PatientSystem.cpp : This file contains the 'main' function. Program execution begins and ends there.
+//
 
 #include <iostream>
 #include <memory>
@@ -24,7 +25,7 @@ int main()
 	std::cout << "=============================\n";
 	//TEST BLOCK END
 
-	pms->run();   //Keep the original app flow
+	pms->run();   // Keep the original app flow
 
 	return 0;
 }

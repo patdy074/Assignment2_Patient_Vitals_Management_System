@@ -8,7 +8,7 @@
 #include "Patient.h"//JUST FOR TEST
 
 
-//forward declare several classes
+// forward declare several classes
 class AbstractPatientDatabaseLoader;
 class HospitalAlertSystemFacade;
 class GPNotificationSystemFacade;
@@ -22,18 +22,18 @@ public:
 	PatientManagementSystem();
 	~PatientManagementSystem();
 
-	//initialise the patient records
+	// initialise the patient records
 	void init();
 	void run();
 
-	//ask the user for a patient and vitals and add those vitals to the patient
+	// ask the user for a patient and vitals and add those vitals to the patient
 	void addVitalsRecord();
 
 	void printWelcomeMessage() const;
 	void printMainMenu() const;
 	void printPatients() const;
 
-	//For test/debug only
+	// For test/debug only
 	const std::vector<Patient*>& getAllPatients() const;
 
 

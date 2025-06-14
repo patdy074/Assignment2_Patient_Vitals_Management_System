@@ -1,3 +1,5 @@
+#define _CRT_SECURE_NO_WARNINGS
+
 #include "PatientFileLoader.h"
 
 #include <fstream>
@@ -32,7 +34,7 @@ std::vector<Patient*> PatientFileLoader::loadPatientFile(const std::string& file
     std::vector<Patient*> patients;
     std::ifstream inFile(file);
     if (!inFile.is_open()) {
-        std::cerr << "Could not open file: " << file << std::endl;
+        std::cerr << "Could not open file: " << file << std::endl; //if not able to open the file 
         return patients;
     }
 
@@ -45,47 +47,38 @@ std::vector<Patient*> PatientFileLoader::loadPatientFile(const std::string& file
         std::getline(ss, fullName, '|');
         std::getline(ss, dobStr, '|');
         std::getline(ss, diagnosis, '|');
-        std::getline(ss, vitalsStr); //May be empty
+        std::getline(ss, vitalsStr); // may be empty
 
-        //Parse name
+        // Parse name
         std::string lastName, firstName;
         std::stringstream nameSS(fullName);
         std::getline(nameSS, lastName, ',');
         std::getline(nameSS, firstName);
 
-        //Parse DOB
-        int day = 0, month = 0, year = 0;
-        std::stringstream dobSS(dobStr);
-        std::string token;
-        if (std::getline(dobSS, token, '-')) day = std::stoi(token);
-        if (std::getline(dobSS, token, '-')) month = std::stoi(token);
-        if (std::getline(dobSS, token, '-')) year = std::stoi(token);
-
+        // Parse DOB (DD-MM-YYYY)
+        int day, month, year;
         std::tm birthDate = {};
-        birthDate.tm_mday = day;
-        birthDate.tm_mon = month - 1;
-        birthDate.tm_year = year - 1900;
+        if (sscanf(dobStr.c_str(), "%d-%d-%d", &day, &month, &year) == 3) {
+            birthDate.tm_mday = day;
+            birthDate.tm_mon = month - 1;
+            birthDate.tm_year = year - 1900;
+        }
 
-        //Create patient
+        // Create Patient
         Patient* patient = new Patient(firstName, lastName, birthDate);
         patient->addDiagnosis(diagnosis);
 
-        //Parse vitals
+        // Parse vitals (if any)
         if (!vitalsStr.empty()) {
             std::stringstream vitalsSS(vitalsStr);
             std::string vitalsEntry;
             while (std::getline(vitalsSS, vitalsEntry, ';')) {
-                std::stringstream entrySS(vitalsEntry);
-                std::string value;
-                float temp = 0.0f;
-                int bpm = 0, respiration = 0, spo2 = 0;
-
-                if (std::getline(entrySS, value, ',')) temp = std::stof(value);
-                if (std::getline(entrySS, value, ',')) bpm = std::stoi(value);
-                if (std::getline(entrySS, value, ',')) respiration = std::stoi(value);
-                if (std::getline(entrySS, value, ',')) spo2 = std::stoi(value);
-
-                patient->addVitals(new Vitals(temp, bpm, respiration, spo2));
+                float temp;
+                int bpm, respiration, spo2;
+                if (sscanf(vitalsEntry.c_str(), "%f,%d,%d,%d", &temp, &bpm, &respiration, &spo2) == 4) {
+                    Vitals* v = new Vitals(temp, bpm, respiration, spo2);
+                    patient->addVitals(v);
+                }
             }
         }
 
