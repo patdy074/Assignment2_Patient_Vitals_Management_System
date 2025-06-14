@@ -48,10 +48,18 @@ public:
 	const AlertLevel alertLevel() const { return _alertLevel; }
 
 	//for debug/test access only
+	/// @brief Returns the patient's first name (for internal/debug use)
 	std::string getFirstName() const { return _firstName; }
+
+	/// @brief Returns the patient's last name (for internal/debug use)
 	std::string getLastName() const { return _lastName; }
+
+	/// @brief Returns the patient's primary diagnosis (for internal/debug use)
 	std::string getDiagnosis() const { return primaryDiagnosis(); }
+
+	/// @brief Returns all vitals recorded for the patient (for internal/debug use)
 	std::vector<const Vitals*> getAllVitals() const { return _vitals; }
+
 
 protected:
 	std::vector<std::string> _diagnosis;

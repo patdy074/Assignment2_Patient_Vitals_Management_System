@@ -5,8 +5,6 @@
 #include <string>
 #include <vector>
 
-#include "Patient.h"//JUST FOR TEST
-
 
 //forward declare several classes
 class AbstractPatientDatabaseLoader;
@@ -32,9 +30,6 @@ public:
 	void printWelcomeMessage() const;
 	void printMainMenu() const;
 	void printPatients() const;
-
-	//For test/debug only
-	const std::vector<Patient*>& getAllPatients() const;
 
 
 protected:

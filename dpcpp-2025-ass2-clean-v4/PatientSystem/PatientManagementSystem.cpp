@@ -132,9 +132,4 @@ void PatientManagementSystem::printPatients() const
 	}
 }
 
-//test code 
-const std::vector<Patient*>& PatientManagementSystem::getAllPatients() const
-{
-	return _patients;
-}
 
