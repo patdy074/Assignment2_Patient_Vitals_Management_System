@@ -14,7 +14,7 @@ public:
 	void loadPatients(std::vector<Patient*>& patients) override;
 
 	// loads a list of patients from a file and returns a vector of those patients
-	std::vector<Patient*> loadPatientFile(const std::string& file);
+	std::vector<Patient*> loadPatientFile(const std::string& file) const;
 
 };
 
