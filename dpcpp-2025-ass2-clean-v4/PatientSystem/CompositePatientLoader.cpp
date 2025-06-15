@@ -5,5 +5,9 @@ void CompositePatientLoader::addLoader(std::shared_ptr<AbstractPatientDatabaseLo
 }
 
 void CompositePatientLoader::loadPatients(std::vector<Patient*>& patientList) {
-    //empty for now will fill in later
+    for (const auto& loader : loaders) {
+        loader->initialiseConnection();
+        loader->loadPatients(patientList);  //merge directly into the reference list
+        loader->closeConnection();
+    }
 }
