@@ -16,7 +16,7 @@ const std::string Diagnosis::ANDROMEDA_STRAIN= "Andromeda Strain";
 
 Patient::Patient(const std::string& firstName, const std::string& lastName, std::tm birthday) :
 	Person(firstName, lastName, birthday),
-	_alertLevel(AlertLevel::Green)
+	_alertLevel(AlertLevel::GREEN)
 {
 }
 
@@ -81,16 +81,16 @@ void Patient::setAlertLevel(AlertLevel level)
 {
 	_alertLevel = level;
 
-	if (_alertLevel > AlertLevel::Green) {
+	if (_alertLevel > AlertLevel::GREEN) {
 		cout << "Patient: " << humanReadableID() << "has an alert level: ";
 		switch (_alertLevel) {
-		case AlertLevel::Yellow:
+		case AlertLevel::YELLOW:
 			cout << "Yellow";
 			break;
-		case AlertLevel::Orange:
+		case AlertLevel::ORANGE:
 			cout << "Orange";
 			break;
-		case AlertLevel::Red:
+		case AlertLevel::RED:
 			cout << "Red";
 			break;
 		}

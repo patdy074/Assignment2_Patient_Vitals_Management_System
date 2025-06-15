@@ -11,7 +11,7 @@ GPNotificationSystemFacade::~GPNotificationSystemFacade()
 
 void GPNotificationSystemFacade::sendGPNotificationForPatient(Patient* p)
 {
-	if (p->alertLevel() > AlertLevel::Orange) {
+	if (p->alertLevel() > AlertLevel::ORANGE) {
 		// A mocked alert message. A real message would use an SMS/pager gateway or similar
 		std::cout << std::endl;
 		std::cout << "This is an notification to the GPs:" << std::endl;

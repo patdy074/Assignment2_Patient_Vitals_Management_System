@@ -11,7 +11,7 @@ HospitalAlertSystemFacade::~HospitalAlertSystemFacade()
 
 void HospitalAlertSystemFacade::sendAlertForPatient(Patient* p)
 {
-	if (p->alertLevel() == AlertLevel::Red) {
+	if (p->alertLevel() == AlertLevel::RED) {
 		// A mocked alert message. A real message would use an SMS/pager gateway or similar
 		std::cout << std::endl;
 		std::cout << "This is an alert to the hospital:" << std::endl;
