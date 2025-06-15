@@ -1,18 +1,30 @@
-//PatientSystem.cpp : This file contains the 'main' function. Program execution begins and ends there.
+// PatientSystem.cpp : This file contains the 'main' function. Program execution begins and ends there.
 
 #include <iostream>
 #include <memory>
 #include <string>
 
 #include "PatientManagementSystem.h"
+#include "CompositePatientLoader.h"
+#include "PatientDatabaseLoader.h"
+#include "PatientFileLoader.h"
 
 int main()
 {
-	auto pms = std::make_unique<PatientManagementSystem>();
+    //create the composite loader
+    std::shared_ptr<CompositePatientLoader> compositeLoader = std::make_shared<CompositePatientLoader>();
 
-	pms->init(); 
-	pms->run();   //Keep the original app flow
+    //add loaders in correct order: database first, then file
+    compositeLoader->addLoader(std::make_shared<PatientDatabaseLoader>());
+    compositeLoader->addLoader(std::make_shared<PatientFileLoader>());
 
-	return 0;
+    //create the patient management system and inject the loader
+    auto pms = std::make_unique<PatientManagementSystem>();
+    pms->setLoader(compositeLoader); 
+
+    //run the system
+    pms->init();
+    pms->run();
+
+    return 0;
 }
-

@@ -30,6 +30,9 @@ public:
 	void printWelcomeMessage() const;
 	void printMainMenu() const;
 	void printPatients() const;
+    //setter method for the loader
+	void setLoader(std::shared_ptr<AbstractPatientDatabaseLoader> loader);
+
 
 
 protected:
@@ -38,8 +41,7 @@ protected:
 
 	std::unique_ptr<HospitalAlertSystemFacade> _hospitalAlertSystem;
 	std::unique_ptr<GPNotificationSystemFacade> _gpNotificationSystem;
-
-	std::unique_ptr<AbstractPatientDatabaseLoader> _patientDatabaseLoader;
+	std::shared_ptr<AbstractPatientDatabaseLoader> _patientDatabaseLoader;
 
 };
 

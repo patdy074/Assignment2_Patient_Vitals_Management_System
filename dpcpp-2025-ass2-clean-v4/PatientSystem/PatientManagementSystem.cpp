@@ -132,4 +132,9 @@ void PatientManagementSystem::printPatients() const
 	}
 }
 
+void PatientManagementSystem::setLoader(std::shared_ptr<AbstractPatientDatabaseLoader> loader)
+{
+	_patientDatabaseLoader = std::move(loader);
+}
+
 
