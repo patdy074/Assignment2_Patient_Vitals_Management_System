@@ -20,7 +20,13 @@ int main()
 
     //create the patient management system and inject the loader
     auto pms = std::make_unique<PatientManagementSystem>();
-    pms->setLoader(compositeLoader); 
+    
+    
+    pms->setLoader(compositeLoader);    //One-line swap point 
+    /*
+    * pms->setLoader(std::make_shared<PatientFileLoader>()); this for file only
+    * pms->setLoader(std::make_shared<PatientDatabaseLoader>()); this for database only
+    */
 
     //run the system
     pms->init();
