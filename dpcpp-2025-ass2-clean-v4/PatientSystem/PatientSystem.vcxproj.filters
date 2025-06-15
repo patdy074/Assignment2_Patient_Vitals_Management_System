@@ -80,5 +80,8 @@
     <ClInclude Include="CompositePatientLoader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="AlertStrategy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
