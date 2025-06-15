@@ -17,6 +17,8 @@ public:
 	int BP() const { return _bloodPressure; }
 	int HR() const { return _heartRate; }
 	int RR() const { return _respiratoryRate; }
+	
+	int respiratoryRate() const { return _respiratoryRate; }	//method for strategy use
 
 	friend std::ostream& operator<<(std::ostream& os, const Vitals& p);
 
