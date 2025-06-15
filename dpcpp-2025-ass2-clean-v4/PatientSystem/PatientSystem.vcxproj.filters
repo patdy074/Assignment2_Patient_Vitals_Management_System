@@ -51,6 +51,9 @@
     <ClCompile Include="KepralsStrategy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="AndromedaStrategy.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Person.h">
@@ -94,6 +97,9 @@
     </ClInclude>
     <ClInclude Include="KepralsStrategy.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AndromedaStrategy.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
