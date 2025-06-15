@@ -17,11 +17,12 @@ public:
     
      //Loads patients from all added loaders.
      //patientList Reference to vector to populate with Patient pointers.
-     
+    void initialiseConnection() override;
     void loadPatients(std::vector<Patient*>& patientList) override;
+    void closeConnection() override;
 
 private:
     std::vector<std::shared_ptr<AbstractPatientDatabaseLoader>> loaders;
 };
 
-#endif // COMPOSITE_PATIENT_LOADER_H
+#endif 

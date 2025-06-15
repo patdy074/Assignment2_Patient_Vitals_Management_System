@@ -17,4 +17,6 @@ public:
 	virtual void loadPatients(std::vector<Patient*>& patientIn) = 0;
 
 	virtual void closeConnection() = 0;
+
+	virtual ~AbstractPatientDatabaseLoader() {}
 };

@@ -23,10 +23,10 @@ int main()
     
     
     pms->setLoader(compositeLoader);    //One-line swap point 
-    /*
-    * pms->setLoader(std::make_shared<PatientFileLoader>()); this for file only
-    * pms->setLoader(std::make_shared<PatientDatabaseLoader>()); this for database only
-    */
+    
+    //pms->setLoader(std::make_shared<PatientFileLoader>()); //this for file only
+    //pms->setLoader(std::make_shared<PatientDatabaseLoader>()); //this for database only
+    
 
     //run the system
     pms->init();
