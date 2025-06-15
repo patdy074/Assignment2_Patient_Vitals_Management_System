@@ -6,6 +6,10 @@
 
 #include "Vitals.h"
 
+#include "CordycepsStrategy.h"
+#include "KepralsStrategy.h"
+#include "AndromedaStrategy.h"
+
 
 using namespace std;
 
@@ -56,9 +60,9 @@ std::ostream& operator<<(std::ostream& os, const Patient& p)
 	return os;
 }
 
-void Patient::addDiagnosis(const std::string& diagnosis)
-{
+void Patient::addDiagnosis(const std::string& diagnosis) {
 	_diagnosis.push_back(diagnosis);
+	configureAlertStrategy(); 
 }
 
 const std::string& Patient::primaryDiagnosis() const
@@ -69,7 +73,12 @@ const std::string& Patient::primaryDiagnosis() const
 void Patient::addVitals(const Vitals* v)
 {
 	_vitals.push_back(v);
-	// TODO: calculate alert levels
+
+	//only compute alert for newly added vitals (not loaded from file/database)
+	if (_alertStrategy) {
+		AlertLevel level = _alertStrategy->calculateAlertLevel(*this, *v);
+		setAlertLevel(level);
+	}
 }
 
 const std::vector<const Vitals*> Patient::vitals() const
@@ -95,5 +104,21 @@ void Patient::setAlertLevel(AlertLevel level)
 			break;
 		}
 		cout << endl;
+	}
+}
+void Patient::configureAlertStrategy() {
+	std::string diagnosis = primaryDiagnosis();
+
+	if (diagnosis == Diagnosis::CORDYCEPS_BRAIN_INFECTION) {
+		_alertStrategy = std::make_unique<CordycepsStrategy>();
+	}
+	else if (diagnosis == Diagnosis::KEPRALS_SYNDROME) {
+		_alertStrategy = std::make_unique<KepralsStrategy>();
+	}
+	else if (diagnosis == Diagnosis::ANDROMEDA_STRAIN) {
+		_alertStrategy = std::make_unique<AndromedaStrategy>();
+	}
+	else {
+		_alertStrategy = nullptr;
 	}
 }

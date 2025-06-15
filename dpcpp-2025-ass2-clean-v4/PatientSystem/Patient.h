@@ -5,6 +5,7 @@
 #include <vector>
 
 #include "PatientAlertLevels.h"
+#include "AlertStrategy.h"
 
 
 //forward declare classes
@@ -60,6 +61,9 @@ public:
 	/// @brief Returns all vitals recorded for the patient (for internal/debug use)
 	std::vector<const Vitals*> getAllVitals() const { return _vitals; }
 
+    void configureAlertStrategy();
+
+
 
 protected:
 	std::vector<std::string> _diagnosis;
@@ -67,5 +71,7 @@ protected:
 	AlertLevel _alertLevel;
 
 	friend std::ostream& operator<<(std::ostream& os, const Patient& p);
+	std::unique_ptr<AlertStrategy> _alertStrategy;
+
 };
 
