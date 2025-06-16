@@ -143,6 +143,7 @@
     <ClCompile Include="CompositePatientLoader.cpp" />
     <ClCompile Include="CordycepsStrategy.cpp" />
     <ClCompile Include="GPNotificationSystemFacade.cpp" />
+    <ClCompile Include="GPObserver.cpp" />
     <ClCompile Include="HospitalAlertSystemFacade.cpp" />
     <ClCompile Include="HospitalObserver.cpp" />
     <ClCompile Include="KepralsStrategy.cpp" />
@@ -161,6 +162,7 @@
     <ClInclude Include="CompositePatientLoader.h" />
     <ClInclude Include="CordycepsStrategy.h" />
     <ClInclude Include="GPNotificationSystemFacade.h" />
+    <ClInclude Include="GPObserver.h" />
     <ClInclude Include="HospitalAlertSystemFacade.h" />
     <ClInclude Include="HospitalObserver.h" />
     <ClInclude Include="KepralsStrategy.h" />
