@@ -162,6 +162,7 @@
     <ClInclude Include="GPNotificationSystemFacade.h" />
     <ClInclude Include="HospitalAlertSystemFacade.h" />
     <ClInclude Include="KepralsStrategy.h" />
+    <ClInclude Include="ObserverAlertNotification.h" />
     <ClInclude Include="PatientAlertLevels.h" />
     <ClInclude Include="Patient.h" />
     <ClInclude Include="PatientDatabaseLoader.h" />
