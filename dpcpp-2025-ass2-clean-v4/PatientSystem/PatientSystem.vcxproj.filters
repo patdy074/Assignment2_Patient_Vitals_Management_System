@@ -52,7 +52,10 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="AndromedaStrategy.cpp">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HospitalObserver.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -98,10 +101,13 @@
     <ClInclude Include="KepralsStrategy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="AndromedaStrategy.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="ObserverAlertNotification.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HospitalObserver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AndromedaStrategy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
