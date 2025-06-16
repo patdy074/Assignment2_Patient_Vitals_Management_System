@@ -10,6 +10,8 @@
 //#include "PatientDatabaseLoader.h"
 #include "Vitals.h"
 
+#include "HospitalObserver.h"
+#include "GPObserver.h"
 #include "GPNotificationSystemFacade.h"
 #include "HospitalAlertSystemFacade.h"
 
@@ -42,7 +44,8 @@ void PatientManagementSystem::init()
 	}
 
 	for (Patient* p : _patients) {
-		//TODO: do any processing you need here
+		p->attachObserver(new HospitalObserver(_hospitalAlertSystem.get()));
+		p->attachObserver(new GPObserver(_gpNotificationSystem.get()));
 	}
 }
 
