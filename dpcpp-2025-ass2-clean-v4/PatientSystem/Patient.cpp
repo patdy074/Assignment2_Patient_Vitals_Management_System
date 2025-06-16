@@ -101,6 +101,7 @@ void Patient::setAlertLevel(AlertLevel level)
 			break;
 		case AlertLevel::RED:
 			cout << "Red";
+			notifyObservers(); //triger hospital and GP observer
 			break;
 		}
 		cout << endl;
