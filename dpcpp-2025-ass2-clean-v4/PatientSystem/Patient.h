@@ -7,6 +7,9 @@
 #include "PatientAlertLevels.h"
 #include "AlertStrategy.h"
 
+#include "ObserverAlertNotification.h"
+
+
 
 //forward declare classes
 class Vitals;
@@ -63,6 +66,9 @@ public:
 
     void configureAlertStrategy();
 
+	//registers an observer for this patient and observer Pointer to an ObserverAlertNotification implementation.
+	void attachObserver(ObserverAlertNotification* observer); 
+
 
 
 protected:
@@ -72,6 +78,9 @@ protected:
 
 	friend std::ostream& operator<<(std::ostream& os, const Patient& p);
 	std::unique_ptr<AlertStrategy> _alertStrategy;
+
+	void notifyObservers();//all attached observers when alert level becomes RED.
+	std::vector<ObserverAlertNotification*> _observers;
 
 };
 

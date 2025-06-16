@@ -122,3 +122,15 @@ void Patient::configureAlertStrategy() {
 		_alertStrategy = nullptr;
 	}
 }
+
+void Patient::attachObserver(ObserverAlertNotification* observer)
+{
+	_observers.push_back(observer);
+}
+
+void Patient::notifyObservers()
+{
+	for (ObserverAlertNotification* observer : _observers) {
+		observer->update(this);
+	}
+}
